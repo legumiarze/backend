@@ -15,6 +15,8 @@ import * as Joi from 'joi';
                 HOST: Joi.string().default('0.0.0.0'),
                 PORT: Joi.number().default(3000),
                 DATABASE_URL: Joi.string().required(),
+                DATABASE_USERNAME: Joi.string().required(),
+                DATABASE_PASSWORD: Joi.string().required(),
             }),
         }),
     ],
