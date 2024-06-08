@@ -1,5 +1,5 @@
-import { Controller, Get, Query } from "@nestjs/common";
-import { ApiQuery, ApiResponse, ApiTags } from "@nestjs/swagger";
+import { Controller, Get, Param } from '@nestjs/common';
+import { ApiParam, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { StopCollection } from '@app/stops/stops.types';
 import { RoutesService } from '@app/routes/routes.service';
 import { RouteCollection, RouteResource } from '@app/routes/routes.types';
@@ -17,11 +17,11 @@ export class RoutesController {
     }
 
     @Get(':id')
-    @ApiQuery({ name: 'id', type: Number, required: true })
+    @ApiParam({ name: 'id', type: Number, required: true })
     @ApiResponse({ status: 200, description: 'Get route by id', type: RouteResource })
     @ApiResponse({ status: 404, description: 'Route not found' })
     @ApiResponse({ status: 500, description: 'Internal server error' })
-    async getRouteById(@Query('id') id: number) {
+    async getRouteById(@Param('id') id: string) {
         return this.routesService.getRouteById(id);
     }
 }

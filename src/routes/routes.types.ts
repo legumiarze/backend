@@ -1,8 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 export class RouteResource {
-    @ApiProperty({ example: 244 })
-    routeId: number;
+    @ApiProperty({ example: '244' })
+    routeId: string;
 
     @ApiProperty({ example: 'A39' })
     routeShortName: string;
@@ -10,7 +10,7 @@ export class RouteResource {
     @ApiProperty({ example: 'Zaczarnie - Brzozówka - Tarnów - A39' })
     routeLongName: string;
 
-    @ApiProperty({ example: 'Zaczarnie - Brzozówka - Tarnów - A39', required: false })
+    @ApiProperty({ example: 'Zaczarnie - Brzozówka - Tarnów - A39', nullable: false })
     routeDesc: string;
 
     @ApiProperty({ example: 3 })

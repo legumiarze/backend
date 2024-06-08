@@ -8,9 +8,21 @@ async function bootstrap() {
     const app = await NestFactory.createApplicationContext(AppModule);
     const migrationService = app.get(MigrationService);
 
-    logger.log('Starting migration...');
-    await migrationService.migrate();
-    logger.log('Migration completed!');
+    logger.log('Truncating database...');
+    await migrationService.truncate();
+    logger.log('Database truncated!');
+
+    logger.log('Building database schema...');
+    await migrationService.schema();
+    logger.log('Database schema built!');
+
+    logger.log('Loading data for trains...');
+    await migrationService.load('file:///kml');
+    logger.log('Data for trains loaded!');
+
+    logger.log('Loading data for buses...');
+    await migrationService.load('file:///ald');
+    logger.log('Data for buses loaded!');
 
     await app.close();
 }

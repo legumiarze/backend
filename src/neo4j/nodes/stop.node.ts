@@ -2,7 +2,7 @@ import { Integer, Node } from 'neo4j-driver';
 
 export interface StopProperties {
     stopId: string;
-    stopCode: string;
+    stopCode: number;
     stopName: string;
     stopDesc: string;
     stopLat: number;

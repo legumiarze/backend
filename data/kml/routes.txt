@@ -1,0 +1,12 @@
+route_id,agency_id,route_short_name,route_long_name,route_desc,route_type,route_url,route_color,route_text_color
+SKA3,1,SKA3,Kraków Lotnisko - Kraków Mydlniki,,2,,FF0000,
+SKA2,1,SKA2,Kraków Lotnisko - Kraków Mydlniki,,2,,800000,
+SKA1,1,SKA1,Kraków Lotnisko - Kraków Mydlniki,,2,,FFFF00,
+KML,1,KML,Kraków Bochnia,,2,,808000,
+BELIANSKY EXPRESS,1,BELIANSKY EXPRESS,Muszyna - Poprad,,2,,00FF00,
+DUNAJEC,1,DUNAJEC,Dunajec - Kraków,,2,,008000,
+HUBAL,1,HUBAL,Kraków – Genua,,2,,00FFFF,
+WŁÓCZYKIJ,1,WŁÓCZYKIJ,Jasłow - Krynica Zdrój,,2,,008080,
+JASKÓŁKA,1,JASKÓŁKA,Kraków – Genua,,2,,0000FF,
+LUXTORPEDA,1,LUXTORPEDA,Kraków Głów - Zakopane,,2,,000080,
+MOŚCICKI,1,MOŚCICKI,Tarnów - Mościce,,2,,FF00FF,
