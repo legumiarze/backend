@@ -72,17 +72,17 @@ export class StopsService {
             RETURN s1 as s, collect({trip: t1, route: r1, stops: stops}) as t
         `;
 
-        const result = await this.neo4jService.run<RecordShape<'s' | 't', Stop | { trip: Trip; stops: Stop[] }[]>>(
+        const results = await this.neo4jService.run<RecordShape<'s' | 't', Stop | { trip: Trip; stops: Stop[] }[]>>(
             query,
             { stopId: id },
         );
 
-        if (result.records.length === 0) {
+        if (results.records.length === 0) {
             throw new NotFoundException();
         }
 
-        const stop = (result.records[0].get('s') as Stop).properties;
-        const trips = (result.records[0].get('t') as { trip: Trip; route: Route; stops: Stop[] }[]).map((record) => ({
+        const stop = (results.records[0].get('s') as Stop).properties;
+        const trips = (results.records[0].get('t') as { trip: Trip; route: Route; stops: Stop[] }[]).map((record) => ({
             ...record.trip?.properties,
             route: record.route?.properties,
             stops: record.stops.map((stop: any) => stop.properties),
