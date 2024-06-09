@@ -49,12 +49,7 @@ export class StopsService {
         return {
             data: data.records.map((record) => {
                 const stop = record.get('s') as Stop;
-                // const route = record.get('r') as Route;
-
-                return {
-                    ...stop.properties,
-                    // route: route.properties,
-                };
+                return stop.properties;
             }),
         };
     }

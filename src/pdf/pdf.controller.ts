@@ -8,9 +8,9 @@ export class PdfController {
     constructor(private readonly pdfService: PdfService) {}
 
     @Get()
-    @ApiQuery({ name: 'tripId', type: String, required: true })
-    @ApiQuery({ name: 'startStopId', type: String, required: true })
-    @ApiQuery({ name: 'endStopId', type: String, required: true })
+    @ApiQuery({ name: 'tripId', type: String, required: true, example: '19678677_7952' })
+    @ApiQuery({ name: 'startStopId', type: String, required: true, example: '1014865' })
+    @ApiQuery({ name: 'endStopId', type: String, required: true, example: '824754' })
     @ApiResponse({ status: 200, description: 'Get PDF document', content: { 'application/pdf': {} } })
     @ApiResponse({ status: 500, description: 'Internal server error' })
     async getPdf(

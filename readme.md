@@ -1,17 +1,3 @@
-### Notes
+# Kościuszkon Hackathon - Koleje Małopolskie Enhanced
 
-All stops for given trip
-
-```cypher
-MATCH (t:Trip {tripId: 1})<-[:PART_OF_TRIP]-(st:Stoptime)-[:LOCATED_AT]->(s:Stop)
-RETURN s
-ORDER BY st.stopSequence
-```
-
-All trips going through given stop
-
-```cypher
-MATCH (s:Stop {stopId: 244})<-[:LOCATED_AT]-(st:Stoptime)-[:PART_OF_TRIP]->(t:Trip)
-RETURN DISTINCT t
-ORDER BY t.tripId
-```
+This repository contains the backend code for our transportation booking application developed during the "Kościuszkon" hackathon. We chose NestJS for backend development and integrated Neo4j as our database solution. Neo4j was selected due to its suitability for handling GTFS data and facilitating efficient pathfinding and relationship management. The backend provides APIs for handling user authentication, booking management, and data retrieval. Developers can follow the setup instructions to run the backend locally and contribute to its development by following the guidelines outlined in the repository. Future development plans include enhancements to API functionality and performance optimizations.
