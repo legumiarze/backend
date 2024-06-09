@@ -1,9 +1,7 @@
-import { TripResource } from '@app/trips/trips.types';
 import { ApiProperty } from '@nestjs/swagger';
+import { StopResource } from '@app/stops/stops.types';
 
-export class SearchResource {
-    trips: TripResource[];
-}
+export class SearchResource extends StopResource {}
 
 export class SearchCollection {
     @ApiProperty({ type: [SearchResource] })

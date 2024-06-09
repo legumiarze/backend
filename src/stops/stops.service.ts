@@ -20,7 +20,7 @@ export class StopsService {
     ): Promise<StopCollection> {
         let query = '';
         query += 'WITH {swLat: $swLat, swLon: $swLon, neLat: $neLat, neLon: $neLon} AS box ';
-        query += 'MATCH (s:Stop)<-[:LOCATED_AT]-(:Stoptime)-[:PART_OF_TRIP]->(:Trip)-[:USES]->(r:Route) ';
+        query += 'MATCH (s:Stop) ';
 
         const criteria: string[] = [];
 
@@ -35,7 +35,7 @@ export class StopsService {
         }
 
         query += criteria.length > 0 ? `WHERE ${criteria.join(' OR ')}` : '';
-        query += 'RETURN s, r ';
+        query += 'RETURN s ';
         query += 'ORDER BY s.stopId';
 
         const data = await this.neo4jService.run<RecordShape<'s' | 'r', Stop | Route>>(query, {
@@ -49,11 +49,11 @@ export class StopsService {
         return {
             data: data.records.map((record) => {
                 const stop = record.get('s') as Stop;
-                const route = record.get('r') as Route;
+                // const route = record.get('r') as Route;
 
                 return {
                     ...stop.properties,
-                    route: route.properties,
+                    // route: route.properties,
                 };
             }),
         };
