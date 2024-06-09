@@ -8,7 +8,8 @@ import { StopCollection, StopResource } from '@app/stops/stops.types';
 export class StopsController {
     constructor(private readonly stopsService: StopsService) {}
 
-    @Get('')
+    @Get()
+    @ApiQuery({ name: 'stopName', type: String, required: false })
     @ApiQuery({ name: 'swLat', type: Number, required: false })
     @ApiQuery({ name: 'swLon', type: Number, required: false })
     @ApiQuery({ name: 'neLat', type: Number, required: false })
@@ -16,12 +17,13 @@ export class StopsController {
     @ApiResponse({ status: 200, description: 'Get all stops', type: StopCollection })
     @ApiResponse({ status: 500, description: 'Internal server error' })
     async getStops(
+        @Query('stopName') stopName?: string,
         @Query('swLat') swLat?: number,
         @Query('swLon') swLon?: number,
         @Query('neLat') neLat?: number,
         @Query('neLon') neLon?: number,
     ): Promise<StopCollection> {
-        return this.stopsService.getStops(swLat, swLon, neLat, neLon);
+        return this.stopsService.getStops(stopName, swLat, swLon, neLat, neLon);
     }
 
     @Get(':id')

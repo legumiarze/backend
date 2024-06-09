@@ -19,6 +19,7 @@ export class MigrationService {
         await this.neo4jService.run(`CREATE INDEX IF NOT EXISTS FOR (t:Trip) ON (t.serviceId)`);
         await this.neo4jService.run(`CREATE INDEX IF NOT EXISTS FOR (cd:CalendarDate) ON (cd.serviceId)`);
         await this.neo4jService.run(`CREATE INDEX IF NOT EXISTS FOR (cd:CalendarDate) ON (cd.date)`);
+        await this.neo4jService.run(`CREATE INDEX IF NOT EXISTS FOR (st:Stoptime) ON (st.stopId)`);
         await this.neo4jService.run(`CREATE INDEX IF NOT EXISTS FOR (st:Stoptime) ON (st.stopSequence)`);
         await this.neo4jService.run(`CREATE INDEX IF NOT EXISTS FOR (s:Stop) ON (s.stopId)`);
         await this.neo4jService.run(`CREATE INDEX IF NOT EXISTS FOR (s:Stop) ON (s.name)`);

@@ -1,4 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { StopResource } from '@app/stops/stops.types';
+import { TripResource } from '@app/trips/trips.types';
 
 export class RouteResource {
     @ApiProperty({ example: '244' })
@@ -21,6 +23,12 @@ export class RouteResource {
 
     @ApiProperty({ example: 'F5F5F5' })
     routeTextColor: string;
+
+    @ApiProperty({ type: () => TripResource, nullable: true })
+    trip?: TripResource;
+
+    @ApiProperty({ type: [StopResource], nullable: true })
+    stops?: StopResource[];
 }
 
 export class RouteCollection {

@@ -15,3 +15,8 @@ export class TripResource {
     @ApiProperty({ type: [StopResource], nullable: true })
     stops?: StopResource[];
 }
+
+export class TripCollection {
+    @ApiProperty({ type: [TripResource] })
+    data: TripResource[];
+}
